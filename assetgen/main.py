@@ -1135,7 +1135,7 @@ class AssetGenRunner(object):
                 change = True
                 asset.generate()
         manifest_path = self.manifest_path
-        if manifest_path and (self.manifest_changed or self.manifest_force):
+        if manifest_path and (self.manifest_changed or self.manifest_force or not isfile(manifest_path)):
             log.info("Updated manifest: %s" % manifest_path)
             manifest_file = open(manifest_path, 'wb')
             encode_json(self.manifest, manifest_file)
